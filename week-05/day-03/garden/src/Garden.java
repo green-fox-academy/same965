@@ -41,9 +41,9 @@ public class Garden {
 
         for (Plant wateringPlants : thirstyGarden) {
             if (wateringPlants instanceof Flower) {
-                ((Flower) wateringPlants).wateringFlower((waterAmount / garden.size()));
+                ((Flower) wateringPlants).wateringFlower((waterAmount / thirstyGarden.size()));
             } else if (wateringPlants instanceof Tree) {
-                ((Tree) wateringPlants).wateringTree((waterAmount / garden.size()));
+                ((Tree) wateringPlants).wateringTree((waterAmount / thirstyGarden.size()));
             }
         }
         showGarden();
