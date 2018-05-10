@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Dominoes {
@@ -8,6 +9,7 @@ public class Dominoes {
         // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
         // eg: [2, 4], [4, 3], [3, 5] ...
 
+        Collections.sort(dominoes);
         System.out.println(dominoes);
         System.out.println(orderedDominoes(dominoes));
     }
@@ -22,6 +24,7 @@ public class Dominoes {
         dominoes.add(new Domino(7, 1));
         return dominoes;
     }
+
 
     static List<Domino> orderedDominoes(List<Domino> dominoes) {
         List<Domino> sortedDominoes = new ArrayList<Domino>();
