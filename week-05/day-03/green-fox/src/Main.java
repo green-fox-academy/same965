@@ -21,6 +21,18 @@ public class Main {
         Sponsor elon = new Sponsor("Elon Musk", 46, "male", "SpaceX");
         people.add(elon);
 
+        Student johnny = new Student("John", 20, "male", "BME");
+        Student jo = new Student();
+        try {
+            jo = (Student)johnny.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError(e);
+        }
+
+        System.out.println("Clone: " + jo.name);
+        System.out.println();
+
+
         student.skipDays(3);
 
         for (int i = 0; i < 5; i++) {
