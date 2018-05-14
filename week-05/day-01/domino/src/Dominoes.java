@@ -10,7 +10,12 @@ public class Dominoes {
         // eg: [2, 4], [4, 3], [3, 5] ...
 
         Collections.sort(dominoes);
-        System.out.println(dominoes);
+
+        for (Domino d : dominoes) {
+            d.printAllFields();
+        }
+
+        System.out.println();
         System.out.println(orderedDominoes(dominoes));
     }
 
