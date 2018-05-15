@@ -2,6 +2,7 @@
 out
 *.iml
 *.xml
+*.txt
 
 # if you have a mac
 .DS_Store
