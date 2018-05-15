@@ -15,7 +15,7 @@ public class Main {
         BlogPost blogPost3 = new BlogPost();
         blogPost3.authorname = "William Turton";
         blogPost3.title = "One Engineer Is Trying to Get IBM to Reckon With Trump";
-        blogPost3.publicationDate = "2017.03.28."
+        blogPost3.publicationDate = "2017.03.28.";
         blogPost3.title = "Daniel Hanley, a cybersecurity engineer at IBM, doesn’t want to be the center of attention. " +
                 "When I asked to take his picture outside one of IBM’s New York City offices, he told me that he wasn’t " +
                 "really into the whole organizer profile thing.";
