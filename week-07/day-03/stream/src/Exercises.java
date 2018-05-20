@@ -14,7 +14,7 @@ public class Exercises {
 
         double oddAverage = numbers.stream()
                 .filter(number -> (number & 1) == 1)
-                .mapToInt(number -> number.intValue())
+                .mapToDouble(number -> number)
                 .average()
                 .getAsDouble();
 
