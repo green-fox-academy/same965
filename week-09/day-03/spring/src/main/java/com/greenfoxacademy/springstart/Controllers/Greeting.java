@@ -1,19 +1,33 @@
 package com.greenfoxacademy.springstart.Controllers;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 public class Greeting {
-    private long id;
+    private AtomicLong id;
     private String content;
 
-    public Greeting(long id, String content) {
-        this.id = id;
-        this.content = content;
+    public Greeting() {
+        this.id = new AtomicLong(0L);
     }
 
-    public long getId() {
-        return id;
+    public Greeting(String content) {
+        this.id = new AtomicLong(0L);
+        this.content = content;
     }
 
     public String getContent() {
         return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public AtomicLong getId() {
+        return id;
+    }
+
+    public long counter() {
+        return id.getAndIncrement();
     }
 }
