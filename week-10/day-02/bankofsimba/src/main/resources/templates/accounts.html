@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Accounts #</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<h1 style="font-size: 60px; color: darkblue"> Bank of Simba </h1>
+<table style="width:50%; height:300px; font-size: large">
+    <tr style="background-color:lightblue">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Type of Animal</th>
+        <th>Good or Bad</th>
+    </tr>
+    <tr th:each="currentAccount : ${accounts}" style="background-color:lightgoldenrodyellow" align="center"
+        th:if="${currentAccount.getKing()}">
+        <td th:text="${accounts.indexOf(currentAccount) + 1}"></td>
+        <td th:text="${currentAccount.name}"></td>
+        <td th:text="|${currentAccount.balance} zebra|"></td>
+        <td th:text="${currentAccount.animalType}"></td>
+        <td>
+            <div th:if="${currentAccount.getGood()}">
+                <div>Good One</div>
+            </div>
+            <div th:unless="${currentAccount.getGood()}">
+                <div>Bad Guy</div>
+            </div>
+        </td>
+    </tr>
+    <tr th:each="currentAccount : ${accounts}" style="background-color:lightgray" align="center"
+        th:if="${currentAccount.getKing() == false}">
+        <td th:text="${accounts.indexOf(currentAccount) + 1}"></td>
+        <td th:text="${currentAccount.name}"></td>
+        <td th:text="|${currentAccount.balance} zebra|"></td>
+        <td th:text="${currentAccount.animalType}"></td>
+        <td>
+            <div th:if="${currentAccount.getGood()}">
+                <div>Good One</div>
+            </div>
+            <div th:unless="${currentAccount.getGood()}">
+                <div>Bad Guy</div>
+            </div>
+        </td>
+    </tr>
+</table>
+<p>
+
+</p>
+<form action="#" th:action="@{/newaccount}" method="post">
+    <div>
+        <input type="submit" value="Create new account">
+    </div>
+</form>
+</body>
+</html>
