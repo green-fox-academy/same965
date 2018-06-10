@@ -29,4 +29,25 @@ public class BankServiceImpl implements BankService {
         bankAccounts.add(new BankAccount("Shenzi", 120.0, "hyena", false, false));
     }
 
+    @Override
+    public void raiseBalance(String name) {
+        for (BankAccount bankaccount : bankAccounts) {
+            if (name.equals(bankaccount.getName())) {
+                if (bankaccount.getKing()) {
+                    bankaccount.setBalance(bankaccount.getBalance() + 100);
+                } else {
+                    bankaccount.setBalance(bankaccount.getBalance() + 10);
+                }
+            }
+        }
+    }
+
+    @Override
+    public ArrayList<String> getNameList() {
+        ArrayList<String> nameList = new ArrayList<>();
+        for (BankAccount bankaccount : bankAccounts) {
+            nameList.add(bankaccount.getName());
+        }
+        return nameList;
+    }
 }

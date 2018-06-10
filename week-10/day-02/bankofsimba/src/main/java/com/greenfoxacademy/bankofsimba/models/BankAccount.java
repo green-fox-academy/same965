@@ -40,10 +40,6 @@ public class BankAccount {
         return isGood;
     }
 
-    public void setKing(Boolean king) {
-        isKing = king;
-    }
-
     public void setBalance(Double balance) {
         this.balance = balance;
     }

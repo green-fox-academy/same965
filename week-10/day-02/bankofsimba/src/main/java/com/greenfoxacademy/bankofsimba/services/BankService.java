@@ -13,6 +13,7 @@ public interface BankService {
 
     public void createNewAccount();
 
+    public void raiseBalance(String name);
 
-
+    public ArrayList<String> getNameList();
 }

@@ -48,4 +48,16 @@ public class WebController {
         bankService.add(new BankAccount(name, balance, animalType, isGood, false));
         return "redirect:/show";
     }
+
+    @RequestMapping("raisebalance")
+    public String raisingBalance(Model model) {
+        model.addAttribute("names", bankService.getNameList());
+        return "raisebalance";
+    }
+
+    @PostMapping("newbalance")
+    public String newBalance(@ModelAttribute(value = "name") String name) {
+        bankService.raiseBalance(name);
+        return "redirect:/show";
+    }
 }
