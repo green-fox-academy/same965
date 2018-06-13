@@ -23,4 +23,17 @@ public class UtilityService {
     public String randomColor() {
         return colors.get(random.nextInt(colors.size()));
     }
+
+    public boolean validateEmail(String email) {
+        char[] emailCharacters = email.toCharArray();
+        char at = '@';
+        char dot = '.';
+        for (int i = 0; i < emailCharacters.length ; i++) {
+            for (int j = 0; j < emailCharacters.length; j++) {
+                if (emailCharacters[i] == at && emailCharacters[j] == dot && i < j)
+                return true;
+            }
+        }
+        return false;
+    }
 }
