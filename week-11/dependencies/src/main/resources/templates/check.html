@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greenfox Class App#</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<h1 style="font-size: 40px; color: darkblue"> Greenfox Class App </h1>
+<h3 style="font-size: 30px; color: lightseagreen">Check student: </h3>
+<form action="#" th:action="@{/gfa/check}" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <p>
+
+        </p>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+    <P>
+
+    </P>
+    <div th:if="${students}">Student is already in the list
+    </div>
+</form>
+</body>
+</html>
