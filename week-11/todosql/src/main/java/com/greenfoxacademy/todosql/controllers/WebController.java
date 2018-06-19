@@ -4,11 +4,9 @@ import com.greenfoxacademy.todosql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@Controller(value = "todo")
 public class WebController {
 
     public final TodoService todoService;
@@ -34,5 +32,18 @@ public class WebController {
     public String listUndone(@RequestParam("isActive") boolean isActive, Model model) {
         model.addAttribute("undone", todoService.listUnDoneTodos(isActive));
         return "undonelist";
+    }
+
+    @GetMapping("todo/add")
+    public String newTodo() {
+        return "addtodo";
+    }
+
+    @PostMapping("newtodo")
+    public String addNewTodo(@ModelAttribute(value = "title") String title,
+                             @ModelAttribute(value = "urgent") boolean urgent,
+                             @ModelAttribute(value = "done") boolean done) {
+        todoService.saveFromForm(title, urgent, done);
+        return "redirect:/list";
     }
 }

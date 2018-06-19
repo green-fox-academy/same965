@@ -30,6 +30,10 @@ public class TodoService {
         add(new Todo("start programmer fox club exercise", false, false));
     }
 
+    public void saveFromForm(String title, boolean urgent, boolean done) {
+        add(new Todo(title, urgent, done));
+    }
+
     public List<Todo> listTodos() {
         return (List<Todo>) todoRepository.findAll();
     }
