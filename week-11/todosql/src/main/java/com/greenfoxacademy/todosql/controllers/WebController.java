@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "todo")
 public class WebController {
@@ -44,6 +45,12 @@ public class WebController {
                              @ModelAttribute(value = "urgent") boolean urgent,
                              @ModelAttribute(value = "done") boolean done) {
         todoService.saveFromForm(title, urgent, done);
+        return "redirect:/list";
+    }
+
+    @RequestMapping("{id}/delete")
+    public String deleteTodo(@PathVariable("id") Long id) {
+        todoService.delete(id);
         return "redirect:/list";
     }
 }
