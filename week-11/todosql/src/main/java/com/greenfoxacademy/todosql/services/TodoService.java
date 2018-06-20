@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TodoService {
+public class TodoService implements TodoServiceInt {
 
     public final TodoRepository todoRepository;
 
@@ -51,5 +52,17 @@ public class TodoService {
 
     public void delete(Long id) {
         todoRepository.deleteById(id);
+    }
+
+    public Todo getTodoById(Long id) {
+        return todoRepository.findById(id).get();
+    }
+
+    public void saveById(Long id, String title, Boolean urgent, Boolean done) {
+        Todo editedTodo = todoRepository.findById(id).get();
+        editedTodo.setTitle(title);
+        editedTodo.setUrgent(urgent);
+        editedTodo.setDone(done);
+        todoRepository.save(editedTodo);
     }
 }

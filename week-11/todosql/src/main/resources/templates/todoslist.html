@@ -26,6 +26,9 @@
         <td>
             <a th:href="@{'/{id}/delete'(id=${todo.id})}" th:text="delete" > </a>
         </td>
+        <td>
+            <a th:href="@{'/{id}/edit'(id=${todo.id})}" th:text="edit" > </a>
+        </td>
     </tr>
 </table>
 </body>
