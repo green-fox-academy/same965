@@ -1,6 +1,7 @@
 package com.greenfoxacademy.foxclub.services;
 
 import com.greenfoxacademy.foxclub.models.Fox;
+import com.greenfoxacademy.foxclub.models.Tricks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,6 @@ public class FoxServiceImpl implements FoxService {
         if (fox.getTricks() == null) {
             return 0;
         }
-        return fox.getTricks().numberOfTrick();
+        return fox.getTricks().getTricks().size();
     }
 }

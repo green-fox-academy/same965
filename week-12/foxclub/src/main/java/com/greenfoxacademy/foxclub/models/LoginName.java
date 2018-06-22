@@ -21,12 +21,12 @@ public class LoginName {
         this.loginName = loginName;
     }
 
-    public void add(String name) {
-        loginName.add(name);
-    }
-
-    public boolean check(String name) {
-        return loginName.contains(name);
-    }
+//    public void add(String name) {
+//        loginName.add(name);
+//    }
+//
+//    public boolean check(String name) {
+//        return loginName.contains(name);
+//    }
 }
 

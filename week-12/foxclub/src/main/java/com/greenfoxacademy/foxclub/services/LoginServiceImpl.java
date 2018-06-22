@@ -17,10 +17,10 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public void addLoginName(String name) {
-        loginName.add(name);
+        loginName.getLoginName().add(name);
     }
 
     public boolean checkLoginName(String name) {
-        return loginName.check(name);
+        return loginName.getLoginName().contains(name);
     }
 }

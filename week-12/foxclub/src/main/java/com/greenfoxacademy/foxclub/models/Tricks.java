@@ -22,8 +22,4 @@ public class Tricks {
     public void addTrick(String trickName) {
         tricks.add(trickName);
     }
-
-    public int numberOfTrick() {
-        return tricks.size() + 1;
-    }
 }
