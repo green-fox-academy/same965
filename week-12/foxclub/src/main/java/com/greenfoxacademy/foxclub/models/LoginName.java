@@ -20,13 +20,5 @@ public class LoginName {
     public void setLoginName(List<String> loginName) {
         this.loginName = loginName;
     }
-
-//    public void add(String name) {
-//        loginName.add(name);
-//    }
-//
-//    public boolean check(String name) {
-//        return loginName.contains(name);
-//    }
 }
 
