@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 public interface FoxService {
     public void setFoxName(String name);
     public void getFoxName();
+    public int numberOfTricks();
 }

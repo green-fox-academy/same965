@@ -11,11 +11,16 @@
     </li>
 </ul>
 <img src="greenfox.png" alt="fox">
-<p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 tricks.'"></p>
+<p th:text="'This is ' + ${name} + '. Currently living on salad and water. He knows ' + ${numberoftricks} + ' tricks.'"></p>
 <h1>Known tricks</h1>
+<div th:if="${numberoftricks > 0}">
 <ul>
     <li>Writh HTML</li>
     <li>Code in Java</li>
 </ul>
+</div>
+<div th:unless="${numberoftricks > 0}">
+    <p>You know no tricks, yet. Go and learn some.</p>
+</div>
 </body>
 </html>

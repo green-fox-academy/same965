@@ -23,4 +23,10 @@ public class FoxServiceImpl implements FoxService {
         fox.getName();
     }
 
+    public int numberOfTricks() {
+        if (fox.getTricks() == null) {
+            return 0;
+        }
+        return fox.getTricks().numberOfTrick();
+    }
 }
