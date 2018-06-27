@@ -1,6 +1,5 @@
 package com.greenfoxacademy.foxclub.controllers;
 
-import com.greenfoxacademy.foxclub.models.LoginName;
 import com.greenfoxacademy.foxclub.services.FoxService;
 import com.greenfoxacademy.foxclub.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,10 @@ public class MainController {
                            String name, Model model) {
         model.addAttribute("name", name);
         model.addAttribute("numberoftricks", foxService.numberOfTricks());
-        foxService.getFoxName();
+        model.addAttribute("foxname", foxService.getFoxName());
+        model.addAttribute("food", foxService.getFoxFood());
+        model.addAttribute("drink", foxService.getFoxDrink());
+        model.addAttribute("tricks", foxService.getFoxTricks());
         return "index";
     }
 
@@ -40,6 +42,7 @@ public class MainController {
     @PostMapping("loginbyname")
     public String login(@RequestParam("name") String name) {
         if (loginService.checkLoginName(name)) {
+            foxService.setFoxName(name);
             return "redirect:/?name=" + name;
         }
         return "redirect:/login";

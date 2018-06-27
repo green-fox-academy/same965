@@ -6,21 +6,19 @@
 </head>
 <body>
 <ul>
-    <li><a href = "/">
-        Information</a>
+    <li><a th:href = "@{'/?name=' + ${foxname}}">Information</a>
+    </li>
+    <li><a th:href = "@{'/nutritionstore?name=' + ${foxname}}">Nutrition Store</a>
+    </li>
+    <li><a th:href="@{'/trickcenter?name=' + ${foxname}}">Trick Center</a>
     </li>
 </ul>
 <img src="greenfox.png" alt="fox">
-<p th:text="'This is ' + ${name} + '. Currently living on salad and water. He knows ' + ${numberoftricks} + ' tricks.'"></p>
+<p th:text="'This is ' + ${foxname} + '. Currently living on ' + ${food} + ' and ' + ${drink} +'. He knows ' + ${numberoftricks} + ' tricks.'"></p>
 <h1>Known tricks</h1>
-<div th:if="${numberoftricks > 0}">
-<ul>
-    <li>Writh HTML</li>
-    <li>Code in Java</li>
+<ul th:if="${tricks != null}" th:each="trick : ${tricks}">
+    <li th:text="${trick}"></li>
 </ul>
-</div>
-<div th:unless="${numberoftricks > 0}">
-    <p>You know no tricks, yet. Go and learn some.</p>
-</div>
+<p th:if="${numberoftricks == 0}">You know no tricks, yet. Go and learn some.</p>
 </body>
 </html>

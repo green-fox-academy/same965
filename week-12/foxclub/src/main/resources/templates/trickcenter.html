@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Programmer Fox Club</title>
+</head>
+<body>
+<h1>Trick Center</h1>
+<ul>
+    <li><a th:href = "@{'/?name=' + ${foxname}}">Information</a>
+    </li>
+    <li><a th:href = "@{'/nutritionstore?name=' + ${foxname}}">Nutrition Store</a>
+    </li>
+    <li><a th:href="@{'/trickcenter?name=' + ${foxname}}">Trick Center</a>
+    </li>
+</ul>
+<form action="#" th:action="@{/trick}" method="post">
+    <input type="hidden" name="name" th:value="${name}"/>
+    <label for="tricks">Tricks: </label>
+        <select id="tricks" name="tricks" >
+            <option value="Code in Java">Code in Java</option>
+            <option value="Perfect in Thymeleaf">Perfect in Thymeleaf</option>
+            <option value="Master in Spring">Master in Spring</option>
+            <option value="Say Ding-ding-ding-ding-dingdiding">Say Ding-ding-ding-ding-dingdiding</option>
+            <option value="Look into the empty box">Look into the empty box</option>
+            <option value="Do code review">Do code review</option>
+        </select>
+    <input type="submit" value="Learn">
+</form>
+</body>
+</html>
