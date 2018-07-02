@@ -1,5 +1,6 @@
 package com.greenfoxacademy.rest.service;
 
+import com.greenfoxacademy.rest.model.Append;
 import com.greenfoxacademy.rest.model.Doubling;
 import com.greenfoxacademy.rest.model.Errors;
 import com.greenfoxacademy.rest.model.Welcome;
@@ -12,12 +13,14 @@ public class RestServiceImpl implements RestService {
     private final Doubling doubling;
     private final Errors errors;
     private final Welcome welcome;
+    private final Append append;
 
     @Autowired
-    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome) {
+    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome, Append append) {
         this.doubling = doubling;
         this.errors = errors;
         this.welcome = welcome;
+        this.append = append;
     }
 
     public Integer doubleNumber(Integer input) {
@@ -39,4 +42,10 @@ public class RestServiceImpl implements RestService {
         }
         return new Welcome("Oh, hi there " + name + ", my dear " + title + "!");
     }
+
+    public Append appendA(String appendable) {
+        return new Append(appendable, appendable + "a");
+    }
+
+
 }

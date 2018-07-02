@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Welcome {
     @JsonProperty("welcome_message")
-    String welcomeMessage;
+    private String welcomeMessage;
 
     public Welcome() {
     }

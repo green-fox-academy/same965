@@ -25,4 +25,9 @@ public class ExerciseController {
                           @RequestParam(value = "title", required = false) String title) {
         return restService.welcome(name, title);
     }
+
+    @GetMapping("appenda/{appendable}")
+    public Object appenda(@PathVariable(value = "appendable") String appendable) {
+        return restService.appendA(appendable);
+    }
 }
