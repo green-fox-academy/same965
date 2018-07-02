@@ -16,9 +16,12 @@ public class ExerciseController {
 
     @GetMapping("doubling")
     public Object doublingInput(@RequestParam(value = "input", required = false) Integer input) {
-        if (input != null) {
-            return restService.doubleNumber(input);
-        }
-        return restService.errorMessage();
+        return restService.doublingExercise(input);
+    }
+
+    @GetMapping("greeter")
+    public String greeter(@RequestParam(value = "name", required = false) String name,
+                          @RequestParam(value = "title", required = false) String title) {
+        return restService.welcome(name, title);
     }
 }
