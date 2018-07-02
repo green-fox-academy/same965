@@ -3,6 +3,7 @@ package com.greenfoxacademy.rest.controller;
 
 import com.greenfoxacademy.rest.service.RestService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class ExerciseController {
     }
 
     @GetMapping("greeter")
-    public String greeter(@RequestParam(value = "name", required = false) String name,
+    public Object greeter(@RequestParam(value = "name", required = false) String name,
                           @RequestParam(value = "title", required = false) String title) {
         return restService.welcome(name, title);
     }
