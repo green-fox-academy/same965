@@ -1,11 +1,9 @@
 package com.greenfoxacademy.rest.controller;
 
 
+import com.greenfoxacademy.rest.model.Until;
 import com.greenfoxacademy.rest.service.RestService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ExerciseController {
@@ -29,5 +27,11 @@ public class ExerciseController {
     @GetMapping("appenda/{appendable}")
     public Object appenda(@PathVariable(value = "appendable") String appendable) {
         return restService.appendA(appendable);
+    }
+
+    @PostMapping("dountil/{what}")
+    public Object dountil(@PathVariable(value = "what") String what,
+                          @RequestBody(required = false) Until until) {
+        return restService.doUntil(what, until);
     }
 }

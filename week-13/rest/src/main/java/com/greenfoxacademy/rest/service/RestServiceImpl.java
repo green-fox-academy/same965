@@ -1,9 +1,6 @@
 package com.greenfoxacademy.rest.service;
 
-import com.greenfoxacademy.rest.model.Append;
-import com.greenfoxacademy.rest.model.Doubling;
-import com.greenfoxacademy.rest.model.Errors;
-import com.greenfoxacademy.rest.model.Welcome;
+import com.greenfoxacademy.rest.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +11,17 @@ public class RestServiceImpl implements RestService {
     private final Errors errors;
     private final Welcome welcome;
     private final Append append;
+    private final Until until;
+    private final DoUntil result;
 
     @Autowired
-    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome, Append append) {
+    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome, Append append, Until until, DoUntil result) {
         this.doubling = doubling;
         this.errors = errors;
         this.welcome = welcome;
         this.append = append;
+        this.until = until;
+        this.result = result;
     }
 
     public Integer doubleNumber(Integer input) {
@@ -47,5 +48,32 @@ public class RestServiceImpl implements RestService {
         return new Append(appendable, appendable + "a");
     }
 
+    private Integer sum(Integer number) {
+        Integer sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += i;
+        }
+        return sum;
+    }
 
+    private Integer factor(Integer number) {
+        Integer factor = 1;
+        for (int i = 1; i <= number; i++) {
+            factor *= i;
+        }
+        return factor;
+    }
+
+    public Object doUntil(String what, Until until) {
+        if (until == null) {
+            return new Errors("Please provide a number!");
+        } else if (what == null) {
+            return new Errors("Please tell what to do!");
+        } else if (what.equals("sum")) {
+            result.setResult(sum(until.getUntil()));
+        } else if (what.equals("factor")) {
+            result.setResult(factor(until.getUntil()));
+        }
+        return result;
+    }
 }
