@@ -13,15 +13,17 @@ public class RestServiceImpl implements RestService {
     private final Append append;
     private final Until until;
     private final DoUntil result;
+    private final ArrayHandler arrayHandler;
 
     @Autowired
-    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome, Append append, Until until, DoUntil result) {
+    public RestServiceImpl(Doubling doubling, Errors errors, Welcome welcome, Append append, Until until, DoUntil result, ArrayHandler arrayHandler) {
         this.doubling = doubling;
         this.errors = errors;
         this.welcome = welcome;
         this.append = append;
         this.until = until;
         this.result = result;
+        this.arrayHandler = arrayHandler;
     }
 
     public Integer doubleNumber(Integer input) {
@@ -75,5 +77,41 @@ public class RestServiceImpl implements RestService {
             result.setResult(factor(until.getUntil()));
         }
         return result;
+    }
+
+    private Integer sumNumbers(Integer[] numbers) {
+        Integer sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        return sum;
+    }
+
+    private Integer multiply(Integer[] numbers) {
+        Integer multiply = 1;
+        for (int i = 0; i < numbers.length; i++) {
+            multiply *= numbers[i];
+        }
+        return multiply;
+    }
+
+    private Integer[] doubleNumbers(Integer[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = numbers[i] * 2;
+        }
+        return numbers;
+    }
+
+    public Object arrayHandler(ArrayHandler arrayHandler) {
+        if (arrayHandler.getWhat() == null || arrayHandler.getNumbers() == null || arrayHandler == null) {
+            return new Errors("Please provide what to do with the numbers!");
+        } else if (arrayHandler.getWhat().equals("sum")) {
+            return sumNumbers(arrayHandler.getNumbers());
+        } else if (arrayHandler.getWhat().equals("multiply")) {
+            return multiply(arrayHandler.getNumbers());
+        } else if (arrayHandler.getWhat().equals("double")) {
+            return doubleNumbers(arrayHandler.getNumbers());
+        }
+        return new Errors("Please provide what to do with the numbers!");
     }
 }

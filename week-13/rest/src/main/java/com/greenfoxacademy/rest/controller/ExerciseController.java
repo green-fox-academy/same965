@@ -1,6 +1,7 @@
 package com.greenfoxacademy.rest.controller;
 
 
+import com.greenfoxacademy.rest.model.ArrayHandler;
 import com.greenfoxacademy.rest.model.Until;
 import com.greenfoxacademy.rest.service.RestService;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,10 @@ public class ExerciseController {
     public Object dountil(@PathVariable(value = "what") String what,
                           @RequestBody(required = false) Until until) {
         return restService.doUntil(what, until);
+    }
+
+    @PostMapping("arrays")
+    public Object arrays(@RequestBody(required = false) ArrayHandler arrayHandler) {
+        return restService.arrayHandler(arrayHandler);
     }
 }
