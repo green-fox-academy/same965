@@ -26,4 +26,16 @@ public class PostController {
         postService.addPost(post);
         return postService.listing();
     }
+
+    @PutMapping("posts/{id}/upvote")
+    public Post upvote(@PathVariable(value = "id") Long id) {
+        postService.upvotePost(id);
+        return postService.findPost(id);
+    }
+
+    @PutMapping("posts/{id}/downvote")
+    public Post downvote(@PathVariable(value = "id") Long id) {
+        postService.downvotePost(id);
+        return postService.findPost(id);
+    }
 }

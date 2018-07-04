@@ -17,7 +17,7 @@ import java.util.Date;
 public class Post {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     private String url;
     private Date timestamp;
@@ -26,5 +26,13 @@ public class Post {
     public Post() {
         this.timestamp = new Date();
         this.score = 0;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
