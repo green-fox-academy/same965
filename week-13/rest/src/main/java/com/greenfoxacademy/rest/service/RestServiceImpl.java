@@ -30,11 +30,16 @@ public class RestServiceImpl implements RestService {
         return input * 2;
     }
 
-    public Object doublingExercise(Integer input) {
-        if (input != null) {
-            return new Doubling(input, doubleNumber(input));
-        }
-        return new Errors("Please provide an input!");
+    public Doubling doublingExercise(Integer input) {
+        return new Doubling(input, doubleNumber(input));
+    }
+
+    public DoublingResponse doublingResponse(Integer input) {
+        return new DoublingResponse(input, doubleNumber(input), null);
+    }
+
+    public DoublingResponse doublingError() {
+        return new DoublingResponse(null, null, "Please provide an input!");
     }
 
     public Object welcome(String name, String title) {

@@ -1,9 +1,11 @@
 package com.greenfoxacademy.rest.controller;
 
 
-import com.greenfoxacademy.rest.model.ArrayHandler;
-import com.greenfoxacademy.rest.model.Until;
+import com.greenfoxacademy.rest.model.*;
 import com.greenfoxacademy.rest.service.RestService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,9 +16,14 @@ public class ExerciseController {
         this.restService = restService;
     }
 
-    @GetMapping("doubling")
-    public Object doublingInput(@RequestParam(value = "input", required = false) Integer input) {
-        return restService.doublingExercise(input);
+    @GetMapping(value = "doubling")
+    public ResponseEntity<DoublingResponse> doublingInput(@RequestParam(value = "input", required = false) Integer input) {
+        if (input != null) {
+            DoublingResponse doubling = restService.doublingResponse(input);
+            return new ResponseEntity<>(doubling, HttpStatus.OK);
+        }
+        DoublingResponse error = restService.doublingError();
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("greeter")
